@@ -283,9 +283,10 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-  </head>
+    {% if template == 'cart' %}{% include "revy-bundle-script" %}{% endif %}
 
-  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+  </head>
+<body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
@@ -355,5 +356,6 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+    {% include 'revy-bundle-script' %}
   </body>
 </html>
